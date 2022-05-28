@@ -10,7 +10,12 @@ export interface HeaderProps {
 
 export function Header({ leftContent, rightContent, className }: HeaderProps) {
   return (
-    <header className={classNames('w-full px-10 py-5 border-b border-b-gray-300 dark:border-b-gray-700 bg-transparent fixed top-0 left-0', className)}>
+    <header
+      className={classNames(
+        'w-full px-10 py-5 border-b border-b-gray-300 dark:border-b-gray-700 bg-transparent fixed top-0 left-0',
+        className
+      )}
+    >
       <div className={styles['left-content']}>{leftContent}</div>
       <div className={styles['right-content']}>{rightContent}</div>
     </header>

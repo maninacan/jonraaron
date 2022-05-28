@@ -7,6 +7,7 @@
     "storybook": "nx run common-components:storybook",
     "build": "nx build",
     "test": "nx test",
+    "prettier:check": "npx prettier --check .",
     "prepare": "husky install"
   },
   "private": true,

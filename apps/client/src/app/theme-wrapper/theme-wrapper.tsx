@@ -1,11 +1,11 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from 'react';
 
 export interface ThemeWrapperProps {
   children: ReactNode;
 }
 
 export function ThemeWrapper({ children }: ThemeWrapperProps) {
-  const theme = localStorage["theme"];
+  const theme = localStorage['theme'];
   useEffect(() => {
     if (
       theme === 'dark' ||
