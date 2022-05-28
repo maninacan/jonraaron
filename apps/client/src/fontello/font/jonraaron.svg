@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
+<defs>
+<font id="jonraaron" horiz-adv-x="1000" >
+<font-face font-family="jonraaron" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="moon" unicode="&#xe800;" d="M63 350c0 242 195 438 437 438 22 0 58-4 80-8 18-3 22-28 6-38-107-61-173-174-173-298 0-214 194-377 406-336 19 3 32-19 20-33-81-101-205-163-339-163-242 0-437 197-437 438z" horiz-adv-x="1000" />
+
+<glyph glyph-name="sun" unicode="&#xe801;" d="M500 539c-104 0-186-84-186-185s81-190 186-190 186 84 186 186-82 189-186 189z m495-367l-124 180 124 178c12 17 2 42-20 46l-212 38-39 213c-4 22-28 32-46 19l-178-125-179 124c-18 12-43 2-47-19l-36-213-213-39c-22-4-32-28-20-44l124-180-124-178c-12-18-2-42 20-46l212-39 39-212c4-22 28-32 46-20l178 124 178-124c18-12 42-2 46 20l39 212 212 39c22 4 32 29 20 46z m-495-70c-138 0-248 112-248 248 0 138 112 248 248 248s248-112 248-248c0-138-110-248-248-248z" horiz-adv-x="1000" />
+
+<glyph glyph-name="display" unicode="&#xe802;" d="M1000 850h-875c-69 0-125-56-125-125v-562c0-69 56-125 125-125h292l-37-126h-99c-17 0-31-14-31-31s14-31 31-31h563c17 0 31 14 31 31s-14 31-31 31h-99l-37 126h292c69 0 125 56 125 125v562c0 69-56 125-125 125z m-320-938h-235l38 126h159l38-126z m383 251c0-35-28-63-63-63h-875c-34 0-62 28-62 63v562c0 35 28 63 62 63h875c35 0 63-28 63-63v-562z" horiz-adv-x="1125" />
+
+<glyph glyph-name="chevron-down" unicode="&#xe803;" d="M8 496c6 7 15 12 23 12 8 0 15-3 22-8l384-354 385 354c13 11 33 11 45-2 11-13 11-32-2-44l-406-375c-12-11-31-11-43 0l-406 375c-13 10-13 30-2 42z" horiz-adv-x="875" />
+</font>
+</defs>
+</svg>

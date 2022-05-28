@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { DropDownMenuWithIcons } from '@jonraaron/data';
@@ -6,15 +6,22 @@ import { kebabCase } from 'lodash';
 
 export interface DropDownWithIconsProps {
   menu: DropDownMenuWithIcons;
+  buttonContent?: ReactNode;
 }
 
-export function DropDownWithIcons({ menu }: DropDownWithIconsProps) {
+export function DropDownWithIcons({
+  menu,
+  buttonContent,
+}: DropDownWithIconsProps) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-black text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-800 focus:ring-indigo-500 dark:focus:ring-indigo-500">
-          Options
-          <i className="chevron-down -mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+          {buttonContent}
+          <i
+            className="jra-chevron-down -mr-1 ml-2 h-5 w-5 text-gray-700 dark:text-gray-200"
+            aria-hidden="true"
+          />
         </Menu.Button>
       </div>
 
@@ -52,10 +59,10 @@ export function DropDownWithIcons({ menu }: DropDownWithIconsProps) {
                               active
                                 ? 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-50'
                                 : 'text-gray-700 dark: text-gray-200',
-                              'group flex items-center px-4 py-2 text-sm'
+                              'group flex items-center px-4 py-2 text-sm hover:bg-green-200'
                             )}
                           >
-                            {icon}
+                            <i className={classNames(icon, 'mr-2')} />
                             {label}
                           </a>
                         );
@@ -71,7 +78,7 @@ export function DropDownWithIcons({ menu }: DropDownWithIconsProps) {
                             'w-full group flex items-center px-4 py-2 text-sm'
                           )}
                         >
-                          {icon}
+                          <i className={classNames(icon, 'mr-2')} />
                           {label}
                         </button>
                       );

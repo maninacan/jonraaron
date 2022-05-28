@@ -1,24 +1,31 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
 import { DropDownWithIcons, Header } from '@jonraaron/common-components';
 import ThemeWrapper from './theme-wrapper/theme-wrapper';
+import classNames from 'classnames';
+import { ThemeEnum } from '@jonraaron/data';
 
 export function App() {
   return (
     <ThemeWrapper>
-      {({ selectLightTheme, selectDarkTheme, selectSystemTheme }) => {
+      {({
+        isSystemSetting,
+        theme,
+        selectLightTheme,
+        selectDarkTheme,
+        selectSystemTheme,
+      }) => {
         const themeDropdownMenu = [
           [
             {
               label: 'Light Theme',
-              icon: <i className="sun" />,
+              icon: 'jra-sun',
               onClick: () => {
                 selectLightTheme();
               },
             },
             {
               label: 'Dark Theme',
-              icon: <i className="moon" />,
+              icon: 'jra-moon',
               onClick: () => {
                 selectDarkTheme();
               },
@@ -27,7 +34,7 @@ export function App() {
           [
             {
               label: 'System Theme',
-              icon: <i className="computer" />,
+              icon: 'jra-display',
               onClick: () => {
                 selectSystemTheme();
               },
@@ -37,11 +44,31 @@ export function App() {
         return (
           <Header
             leftContent={
-              <span className="text-black dark:text-white items-center">
+              <span className="text-2xl text-black dark:text-white items-center">
                 Jon R Aaron
               </span>
             }
-            rightContent={<DropDownWithIcons menu={themeDropdownMenu} />}
+            rightContent={
+              <DropDownWithIcons
+                menu={themeDropdownMenu}
+                buttonContent={
+                  <i
+                    className={classNames(
+                      {
+                        'jra-moon':
+                          theme === ThemeEnum.DARK && !isSystemSetting,
+                      },
+                      {
+                        'jra-sun':
+                          theme === ThemeEnum.LIGHT && !isSystemSetting,
+                      },
+                      { 'jra-display': isSystemSetting },
+                      'mr-2'
+                    )}
+                  />
+                }
+              />
+            }
           />
         );
       }}

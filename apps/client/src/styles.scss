@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import './fontello/css/jonraaron.css';
+
 @tailwind components;
 @tailwind base;
 @tailwind utilities;
+
+body {
+  font-family: 'Shadows Into Light', cursive;
+}

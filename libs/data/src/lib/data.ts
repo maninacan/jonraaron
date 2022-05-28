@@ -1,8 +1,6 @@
-import { ReactNode } from 'react';
-
 export type MenuItem = {
   label: string;
-  icon: ReactNode;
+  icon: string;
   href?: string;
   onClick?: () => void;
 };
@@ -17,6 +15,8 @@ export enum ThemeEnum {
 }
 
 export type ThemeToggleMethods = {
+  isSystemSetting: boolean;
+  theme: ThemeEnum;
   selectLightTheme: () => void;
   selectDarkTheme: () => void;
   selectSystemTheme: () => void;
