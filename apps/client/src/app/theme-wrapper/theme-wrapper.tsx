@@ -1,26 +1,39 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useState } from 'react';
+import classNames from 'classnames';
+import { ThemeEnum, ThemeToggleMethods } from '@jonraaron/data';
 
 export interface ThemeWrapperProps {
-  children: ReactNode;
+  children: (methods: ThemeToggleMethods) => ReactNode;
 }
 
 export function ThemeWrapper({ children }: ThemeWrapperProps) {
-  const theme = localStorage['theme'];
-  useEffect(() => {
-    if (
-      theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
+  const [theme, setTheme] = useState<ThemeEnum>(
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? ThemeEnum.DARK
+      : ThemeEnum.LIGHT
+  );
+
+  const selectDarkTheme = () => {
+    setTheme(ThemeEnum.DARK);
+  };
+
+  const selectLightTheme = () => {
+    setTheme(ThemeEnum.LIGHT);
+  };
+
+  const selectSystemTheme = () => {
+    setTheme(
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? ThemeEnum.DARK
+        : ThemeEnum.LIGHT
+    );
+  };
 
   return (
-    <div className="bg-white dark:bg-black w-full h-screen top-0 left-0 fixed">
-      {children}
+    <div className={classNames(theme === ThemeEnum.DARK ? 'dark' : '')}>
+      <div className="bg-text-gray-50 dark:bg-gray-900 w-full h-screen top-0 left-0 fixed">
+        {children({ selectDarkTheme, selectLightTheme, selectSystemTheme })}
+      </div>
     </div>
   );
 }
