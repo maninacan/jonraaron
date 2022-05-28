@@ -8,6 +8,7 @@
     "build": "nx build",
     "test": "nx test",
     "prettier:check": "npx prettier --check .",
+    "eslint": "npx eslint",
     "prepare": "husky install"
   },
   "private": true,
