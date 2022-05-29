@@ -1,3 +1,9 @@
+import { initI18n } from "./src/i18n";
+initI18n(
+  '/assets/locales/{{lng}}/{{ns}}.json',
+  navigator.languages[0].toLowerCase()
+);
+
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
