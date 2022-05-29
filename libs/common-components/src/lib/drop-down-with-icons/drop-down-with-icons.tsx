@@ -5,16 +5,21 @@ import { DropDownMenuWithIcons } from '@jonraaron/data';
 import { kebabCase } from 'lodash';
 
 export interface DropDownWithIconsProps {
+  className?: string;
   menu: DropDownMenuWithIcons;
   buttonContent?: ReactNode;
 }
 
 export function DropDownWithIcons({
+  className,
   menu,
   buttonContent,
 }: DropDownWithIconsProps) {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu
+      as="div"
+      className={classNames(className, 'relative inline-block text-left')}
+    >
       <div>
         <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-black text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-800 focus:ring-indigo-500 dark:focus:ring-indigo-500">
           {buttonContent}
@@ -62,8 +67,13 @@ export function DropDownWithIcons({
                               'group flex items-center px-4 py-2 text-sm hover:bg-green-200'
                             )}
                           >
-                            <i className={classNames(icon, 'mr-2')} />
-                            {label}
+                            <>
+                              {typeof icon === 'string' && (
+                                <i className={classNames(icon, 'mr-2')} />
+                              )}
+                              {typeof icon === 'object' && icon}
+                              {label}
+                            </>
                           </a>
                         );
                       }
@@ -78,8 +88,13 @@ export function DropDownWithIcons({
                             'w-full group flex items-center px-4 py-2 text-sm'
                           )}
                         >
-                          <i className={classNames(icon, 'mr-2')} />
-                          {label}
+                          <>
+                            {typeof icon === 'string' && (
+                              <i className={classNames(icon, 'mr-2')} />
+                            )}
+                            {typeof icon === 'object' && icon}
+                            {label}
+                          </>
                         </button>
                       );
                     }}
@@ -93,5 +108,9 @@ export function DropDownWithIcons({
     </Menu>
   );
 }
+
+DropDownWithIcons.defaultProps = {
+  className: '',
+};
 
 export default DropDownWithIcons;

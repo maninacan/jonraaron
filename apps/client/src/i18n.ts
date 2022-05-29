@@ -2,26 +2,89 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { Language } from '@jonraaron/data';
+import { useState } from 'react';
 
-i18n
-  // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
-  // learn more: https://github.com/i18next/i18next-http-backend
-  // want your translations to be loaded from a professional CDN? => https://github.com/locize/react-tutorial#step-2---use-the-locize-cdn
-  .use(Backend)
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
-  .init({
-    fallbackLng: 'en',
-    debug: true,
+let hasBeenInitialized = false;
+let initialLanguageSelection: Language;
 
-    interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-  });
+export const supportedLanguages: Language[] = [
+  {
+    code: 'en',
+    name: 'English',
+    country: 'us',
+  },
+  {
+    code: 'es',
+    name: 'Español',
+    country: 'es',
+  },
+  {
+    code: 'pt',
+    name: 'Português',
+    country: 'br',
+  },
+];
 
-export default i18n;
+export function initI18n(loadPath: string, defaultLanguage: string) {
+  if (hasBeenInitialized) {
+    throw Error('i18n has already been initialized!');
+  }
+  initialLanguageSelection =
+    supportedLanguages.find((lang) => lang.code === defaultLanguage) ||
+    supportedLanguages[0];
+
+  i18n
+    .use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+      fallbackLng: defaultLanguage,
+      debug: process.env['NODE_ENV'] === 'development',
+      backend: { loadPath },
+
+      interpolation: {
+        escapeValue: false, // not needed for react as it escapes by default
+      },
+    })
+    .then(() => {
+      hasBeenInitialized = true;
+    });
+}
+
+export const useI18n = () => {
+  const [language, setLanguage] = useState<Language>(
+    initialLanguageSelection || supportedLanguages[0]
+  );
+
+  function getCurrentLanguage(): Language {
+    if (!hasBeenInitialized) {
+      throw Error(
+        'i18n must first be initialized before getCurrentLanguage can be called!'
+      );
+    }
+    return language;
+  }
+
+  function changeLanguage(language: Language) {
+    if (!hasBeenInitialized) {
+      throw Error(
+        'i18n must first be initialized before changeLanguage can be called!'
+      );
+    }
+    setLanguage(language);
+    i18n.changeLanguage(language.code);
+  }
+
+  function onLanguageChanged(callback: (language: Language) => void) {
+    const newCallback = (languageCode: string) => {
+      const currentLanguage =
+        supportedLanguages.find((lang) => lang.code === languageCode) ||
+        supportedLanguages[0];
+      callback(currentLanguage);
+    };
+    i18n.on('languageChanged', newCallback);
+  }
+
+  return { getCurrentLanguage, changeLanguage, onLanguageChanged };
+};

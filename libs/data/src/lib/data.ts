@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 export type MenuItem = {
   label: string;
-  icon: string;
+  icon: ReactNode;
   href?: string;
   onClick?: () => void;
 };
@@ -20,4 +22,10 @@ export type ThemeToggleMethods = {
   selectLightTheme: () => void;
   selectDarkTheme: () => void;
   selectSystemTheme: () => void;
+};
+
+export type Language = {
+  code: string;
+  name: string;
+  country: string;
 };
