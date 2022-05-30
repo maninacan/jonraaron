@@ -1,0 +1,3 @@
+web: npx prisma generate --schema=./apps/draftworks-api/prisma/schema.prisma && node ./dist/apps/draftworks-api/main.js
+
+release: npx prisma migrate deploy --schema=./apps/api/prisma/schema.prisma

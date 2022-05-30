@@ -1,4 +1,9 @@
 {
   "Something-went-wrong": "Algo deu errado",
-  "Try-again": "Tente novamente"
+  "Try-again": "Tente novamente",
+  "Welcome": "Bem-vindo!",
+  "the-purpose-of-this-web-application": "O objetivo desta aplicação web é destacar minha experiência como desenvolvedor web e compartilhar algumas das coisas que aprendi ao longo dos anos.",
+  "the-complete-code-can-be-found": "O código completo para este site pode ser encontrado no ",
+  "The-following-are-a-list-of-tools": "A seguir está uma lista de ferramentas, bibliotecas, software, etc... que usei para construir este site:",
+  "if-you-find-this-site-useful": "Se você achar este site útil e quiser fazer uma solicitação para recursos ou trabalhos futuros, sinta-se à vontade para enviar uma solicitação em "
 }

@@ -29,3 +29,15 @@ export type Language = {
   name: string;
   country: string;
 };
+
+export type LogoData = {
+  name: string;
+  href: string;
+  logoUrl: string;
+  logoAlt: string;
+};
+
+export type ToolData = {
+  name: string;
+  href: string;
+};

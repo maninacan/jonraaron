@@ -10,15 +10,18 @@ export interface HeaderProps {
 
 export function Header({ leftContent, rightContent, className }: HeaderProps) {
   return (
-    <header
-      className={classNames(
-        'flex justify-between w-full px-10 py-5 border-b border-b-gray-300 dark:border-b-gray-700 bg-transparent fixed top-0 left-0',
-        className
-      )}
-    >
-      <div className="flex items-center">{leftContent}</div>
-      <div className="flex items-center">{rightContent}</div>
-    </header>
+    <>
+      <header
+        className={classNames(
+          'flex justify-between w-full h-20 px-10 py-5 border-b border-b-gray-300 dark:border-b-gray-700 bg-transparent fixed top-0 left-0',
+          className
+        )}
+      >
+        <div className="flex items-center">{leftContent}</div>
+        <div className="flex items-center">{rightContent}</div>
+      </header>
+      <header className="dummy-header w-full h-20" />
+    </>
   );
 }
 

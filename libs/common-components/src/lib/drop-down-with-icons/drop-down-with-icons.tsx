@@ -2,7 +2,7 @@ import { Fragment, ReactNode } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { DropDownMenuWithIcons } from '@jonraaron/data';
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 
 export interface DropDownWithIconsProps {
   className?: string;
@@ -62,9 +62,9 @@ export function DropDownWithIcons({
                             href={href}
                             className={classNames(
                               active
-                                ? 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-50'
+                                ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-50'
                                 : 'text-gray-700 dark: text-gray-200',
-                              'group flex items-center px-4 py-2 text-sm hover:bg-gray-200 dark:hover:bg-gray-800'
+                              'group flex items-center px-4 py-2 text-sm'
                             )}
                           >
                             <>
@@ -83,9 +83,9 @@ export function DropDownWithIcons({
                           onClick={onClick}
                           className={classNames(
                             active
-                              ? 'bg-gray-100 text-gray-900 dark:text-gray-50'
+                              ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-50'
                               : 'text-gray-700 dark:text-gray-200',
-                            'w-full group flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800'
+                            'w-full group flex items-center px-4 py-2'
                           )}
                         >
                           <>
