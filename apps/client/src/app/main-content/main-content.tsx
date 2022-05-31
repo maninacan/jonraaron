@@ -150,7 +150,7 @@ export function MainContent() {
           {t('intro:the-purpose-of-this-web-application')}{' '}
           {t('intro:the-complete-code-can-be-found')}
           <a
-            className="text-primary-2"
+            className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
             href="https://github.com/maninacan/jonraaron"
             target="_blank"
             rel="noopener noreferrer"
@@ -159,7 +159,7 @@ export function MainContent() {
           </a>
           . {t('intro:if-you-find-this-site-useful')}
           <a
-            className="text-primary-2"
+            className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
             href="https://github.com/maninacan/jonraaron"
             target="_blank"
             rel="noopener noreferrer"
