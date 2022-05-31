@@ -31,6 +31,7 @@ export function initI18n(loadPath: string, defaultLanguage: string) {
     throw Error('i18n has already been initialized!');
   }
   initialLanguageSelection =
+    initialLanguageSelection ||
     supportedLanguages.find((lang) => lang.code === defaultLanguage) ||
     supportedLanguages[0];
 
@@ -51,6 +52,14 @@ export function initI18n(loadPath: string, defaultLanguage: string) {
       hasBeenInitialized = true;
     });
 }
+
+const newCallback = (languageCode: string) => {
+  const currentLanguage =
+    supportedLanguages.find((lang) => lang.code === languageCode) ||
+    supportedLanguages[0];
+  initialLanguageSelection = currentLanguage;
+};
+i18n.on('languageChanged', newCallback);
 
 export const useI18n = () => {
   const [language, setLanguage] = useState<Language>(

@@ -183,7 +183,7 @@ export function MainContent() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="p-2 h-32 w-32 rounded rounded-md bg-white flex justify-center items-center">
+                <div className="p-2 h-32 w-32 rounded rounded-md bg-white flex justify-center items-center hover:shadow dark:hover:shadow-md dark:hover:shadow-white">
                   <img className="max-h-28" src={logoUrl} alt={logoAlt} />
                 </div>
               </a>
@@ -195,7 +195,7 @@ export function MainContent() {
           {tools.map(({ name, href }) => (
             <li key={kebabCase(name)} className="mx-3 my-6">
               <a
-                className="text-primary-2"
+                className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
