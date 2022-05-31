@@ -178,7 +178,7 @@ export function MainContent() {
               className="flex flex-col justify-center items-center"
             >
               <a
-                className={classNames(styles['svg-logo'], 'm-6')}
+                className="m-6"
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"

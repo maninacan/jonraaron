@@ -4,13 +4,4 @@
   .welcome-text {
     font-family: 'Shadows Into Light', cursive;
   }
-
-  .svg-logo {
-    filter: grayscale(100%);
-    transition: filter 0.5s;
-
-    &:hover {
-      filter: none;
-    }
-  }
 }
