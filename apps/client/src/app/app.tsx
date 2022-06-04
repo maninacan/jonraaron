@@ -3,6 +3,9 @@ import ThemeWrapper from './theme-wrapper/theme-wrapper';
 import MainHeader from './main-header/main-header';
 import MainContent from './main-content/main-content';
 import ErrorFallback from './error-fallback/error-fallback';
+import LogRocket from 'logrocket';
+
+LogRocket.init('jonraaron/jonraaron');
 
 export function App() {
   return (
