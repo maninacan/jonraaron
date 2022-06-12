@@ -3,6 +3,7 @@ import LogRocket from 'logrocket';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
+import setupLogRocketReact from 'logrocket-react';
 
 import ThemeWrapper from './theme-wrapper/theme-wrapper';
 import MainHeader from './main-header/main-header';
@@ -11,6 +12,7 @@ import ErrorFallback from './error-fallback/error-fallback';
 import { removeUser, setUser } from './redux/userSlice';
 
 LogRocket.init(process.env['NX_LOGROCKET_APP_ID'] || '');
+setupLogRocketReact(LogRocket);
 
 export function App() {
   const { user } = useAuth0();
