@@ -1,12 +1,25 @@
 import { useTranslation } from 'react-i18next';
 import { LogoData, ToolData } from '@jonraaron/data';
-import styles from './main-content.module.scss';
 import classNames from 'classnames';
 import kebabCase from 'lodash/kebabCase';
+import { useAuth0 } from '@auth0/auth0-react';
+import { selectUserName } from '../redux/userSlice';
+
+import styles from './main-content.module.scss';
+import { useSelector } from 'react-redux';
 
 export function MainContent() {
   const { t } = useTranslation(['intro']);
+  const { isAuthenticated } = useAuth0();
+  const userName = useSelector(selectUserName);
+
   const logos: LogoData[] = [
+    {
+      name: 'Auth0',
+      href: 'https://auth0.com/',
+      logoUrl: '/assets/images/auth0-seeklogo.com.svg',
+      logoAlt: 'Auth0 Logo',
+    },
     {
       name: 'Babel',
       href: 'https://babeljs.io/',
@@ -85,6 +98,12 @@ export function MainContent() {
       logoUrl: '/assets/images/logrocket-logo.png',
       logoAlt: 'Logrocket Logo',
     },
+    {
+      name: 'Redux',
+      href: 'https://redux.js.org/',
+      logoUrl: '/assets/images/redux-seeklogo.com.svg',
+      logoAlt: 'Redux Logo',
+    },
   ].sort((a: LogoData, b: LogoData) => {
     if (a.name > b.name) return 1;
     if (a.name === b.name) return 0;
@@ -156,7 +175,9 @@ export function MainContent() {
             'text-center text-[48px] mb-10'
           )}
         >
-          {t('intro:Welcome')}
+          {t('intro:Welcome', {
+            userName: isAuthenticated ? ` ${userName}` : '',
+          })}
         </h1>
         <p className="text-2xl mb-20">
           {t('intro:the-purpose-of-this-web-application')}{' '}

@@ -1,7 +1,7 @@
 {
   "Something-went-wrong": "Something went wrong:",
   "Try-again": "Try again",
-  "Welcome": "Welcome!",
+  "Welcome": "Welcome{{userName}}!",
   "the-purpose-of-this-web-application": "The purpose of this web application is to highlight my experience as a web developer and to share some of the things I have learned over the years.",
   "the-complete-code-can-be-found": "The complete code for this site can be found at ",
   "The-following-are-a-list-of-tools": "The following are a list of tools, libraries, software, etc... I have used to build this site:",

@@ -1,10 +1,15 @@
-import styles from './main-header.module.scss';
-import { DropDownWithIcons, Header } from '@jonraaron/common-components';
+import { useTranslation } from 'react-i18next';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux';
 import ReactCountryFlag from 'react-country-flag';
 import classNames from 'classnames';
+import {
+  DropDownWithIcons,
+  Header,
+  IconButton,
+} from '@jonraaron/common-components';
 import { ThemeEnum } from '@jonraaron/data';
 import { supportedLanguages, useI18n } from '../../i18n';
-import { useTranslation } from 'react-i18next';
 
 export interface MainHeaderProps {
   themeProps: {
@@ -19,6 +24,7 @@ export interface MainHeaderProps {
 export function MainHeader({ themeProps }: MainHeaderProps) {
   const { t } = useTranslation(['theme-dropdown']);
   const { changeLanguage, getCurrentLanguage } = useI18n();
+  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
   const {
     isSystemSetting,
     theme,
@@ -95,6 +101,7 @@ export function MainHeader({ themeProps }: MainHeaderProps) {
             }
           />
           <DropDownWithIcons
+            className="mr-2"
             menu={themeDropdownMenu}
             buttonContent={
               <i
@@ -111,6 +118,19 @@ export function MainHeader({ themeProps }: MainHeaderProps) {
               />
             }
           />
+          {isLoading ? (
+            <IconButton className="animate-spin" iconName="jra-spinner-solid" />
+          ) : isAuthenticated ? (
+            <IconButton
+              onClick={logout}
+              iconName="jra-arrow-right-from-bracket-solid"
+            />
+          ) : (
+            <IconButton
+              onClick={loginWithRedirect}
+              iconName="jra-arrow-right-to-bracket-solid"
+            />
+          )}
         </>
       }
     />

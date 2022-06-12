@@ -3,3 +3,6 @@
 .jra-sun:before { content: '\e801'; } /* '' */
 .jra-display:before { content: '\e802'; } /* '' */
 .jra-chevron-down:before { content: '\e803'; } /* '' */
+.jra-arrow-right-from-bracket-solid:before { content: '\e804'; } /* '' */
+.jra-arrow-right-to-bracket-solid:before { content: '\e805'; } /* '' */
+.jra-spinner-solid:before { content: '\e806'; } /* '' */
