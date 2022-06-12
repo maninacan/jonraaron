@@ -193,11 +193,11 @@ export function MainContent() {
           . {t('intro:if-you-find-this-site-useful')}
           <a
             className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
-            href="https://github.com/maninacan/jonraaron"
+            href="https://github.com/maninacan/jonraaron/issues"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Github
+            Github Issues
           </a>
           .
         </p>
