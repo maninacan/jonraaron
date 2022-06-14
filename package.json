@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "fontello:install": "npx concurrently --names \"CLIENT,COMMON-COMPONENTS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run fontello:install-client\" \"npm run fontello:install-common-components\" ",
+    "fontello:install": "rm -rf .fontello-session && npx concurrently --names \"CLIENT,COMMON-COMPONENTS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run fontello:install-client\" \"npm run fontello:install-common-components\" ",
     "fontello:install-client": "npx fontello-cli --config ./fontello.config.json --css ./apps/client/src/fontello/css --font ./apps/client/src/fontello/font install",
     "fontello:install-common-components": "npx fontello-cli --config ./fontello.config.json --css ./libs/common-components/src/fontello/css --font ./libs/common-components/src/fontello/font install",
     "fontello:open": "npx fontello-cli --config ./fontello.config.json open",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.10.1",
     "@headlessui/react": "^1.6.3",
+    "@popperjs/core": "^2.11.5",
     "@reduxjs/toolkit": "1.8.2",
     "autoprefixer": "^10.4.7",
     "babel-plugin-add-react-displayname": "^0.0.5",

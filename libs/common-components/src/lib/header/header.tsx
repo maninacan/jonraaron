@@ -6,9 +6,15 @@ export interface HeaderProps {
   leftContent?: ReactNode;
   rightContent?: ReactNode;
   className?: string;
+  dummyHeaderClassName?: string;
 }
 
-export function Header({ leftContent, rightContent, className }: HeaderProps) {
+export function Header({
+  leftContent,
+  rightContent,
+  className,
+  dummyHeaderClassName,
+}: HeaderProps) {
   return (
     <>
       <header
@@ -20,7 +26,9 @@ export function Header({ leftContent, rightContent, className }: HeaderProps) {
         <div className="flex items-center">{leftContent}</div>
         <div className="flex items-center">{rightContent}</div>
       </header>
-      <header className="dummy-header w-full h-20" />
+      <header
+        className={classNames('dummy-header w-full h-20', dummyHeaderClassName)}
+      />
     </>
   );
 }

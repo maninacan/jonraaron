@@ -10,14 +10,13 @@ export default {
 } as Meta;
 
 const Template: Story<DropDownWithIconsProps> = (args) => (
-  <div className="ml-48 h-48">
-    <DropDownWithIcons {...args} />
-  </div>
+  <DropDownWithIcons {...args} />
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
   buttonContent: 'Click Me!',
+  dropDownClassName: 'origin-top-left left-0',
   menu: [
     [
       {

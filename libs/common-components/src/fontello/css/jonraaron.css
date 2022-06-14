@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'jonraaron';
-  src: url('../font/jonraaron.eot?48748482');
-  src: url('../font/jonraaron.eot?48748482#iefix') format('embedded-opentype'),
-       url('../font/jonraaron.woff2?48748482') format('woff2'),
-       url('../font/jonraaron.woff?48748482') format('woff'),
-       url('../font/jonraaron.ttf?48748482') format('truetype'),
-       url('../font/jonraaron.svg?48748482#jonraaron') format('svg');
+  src: url('../font/jonraaron.eot?13866341');
+  src: url('../font/jonraaron.eot?13866341#iefix') format('embedded-opentype'),
+       url('../font/jonraaron.woff2?13866341') format('woff2'),
+       url('../font/jonraaron.woff?13866341') format('woff'),
+       url('../font/jonraaron.ttf?13866341') format('truetype'),
+       url('../font/jonraaron.svg?13866341#jonraaron') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'jonraaron';
-    src: url('../font/jonraaron.svg?48748482#jonraaron') format('svg');
+    src: url('../font/jonraaron.svg?13866341#jonraaron') format('svg');
   }
 }
 */
@@ -61,3 +61,7 @@
 .jra-arrow-right-from-bracket-solid:before { content: '\e804'; } /* '' */
 .jra-arrow-right-to-bracket-solid:before { content: '\e805'; } /* '' */
 .jra-spinner-solid:before { content: '\e806'; } /* '' */
+.jra-bars-solid:before { content: '\e807'; } /* '' */
+.jra-chevron-up-solid:before { content: '\e808'; } /* '' */
+.jra-chevron-right-solid:before { content: '\e809'; } /* '' */
+.jra-chevron-left-solid:before { content: '\e80a'; } /* '' */

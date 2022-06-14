@@ -1,86 +1,30 @@
-import { useTranslation } from 'react-i18next';
 import { useAuth0 } from '@auth0/auth0-react';
 import ReactCountryFlag from 'react-country-flag';
 import classNames from 'classnames';
-import {
-  DropDownWithIcons,
-  Header,
-  IconButton,
-} from '@jonraaron/common-components';
-import { ThemeEnum } from '@jonraaron/data';
-import { supportedLanguages, useI18n } from '../../i18n';
+import { Header, IconButton } from '@jonraaron/common-components';
+import { DropDownMenuWithIcons, Theme, ThemeEnum } from '@jonraaron/data';
+import { useI18n } from '../../i18n';
+import NavDropdown from '../nav-dropdown/nav-dropdown';
 
 export interface MainHeaderProps {
-  themeProps: {
-    isSystemSetting: boolean;
-    theme: string;
-    selectLightTheme: () => void;
-    selectDarkTheme: () => void;
-    selectSystemTheme: () => void;
-  };
+  themeProps: Theme;
+  themeDropdownMenu: DropDownMenuWithIcons;
+  languagesDropdownMenu: DropDownMenuWithIcons;
 }
 
-export function MainHeader({ themeProps }: MainHeaderProps) {
-  const { t } = useTranslation(['theme-dropdown']);
-  const { changeLanguage, getCurrentLanguage } = useI18n();
+export function MainHeader({
+  themeProps,
+  themeDropdownMenu,
+  languagesDropdownMenu,
+}: MainHeaderProps) {
+  const { getCurrentLanguage } = useI18n();
   const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
-  const {
-    isSystemSetting,
-    theme,
-    selectLightTheme,
-    selectDarkTheme,
-    selectSystemTheme,
-  } = themeProps;
-  const themeDropdownMenu = [
-    [
-      {
-        label: t('theme-dropdown:Light-Theme'),
-        icon: 'jra-sun',
-        onClick: () => {
-          selectLightTheme();
-        },
-      },
-      {
-        label: t('theme-dropdown:Dark-Theme'),
-        icon: 'jra-moon',
-        onClick: () => {
-          selectDarkTheme();
-        },
-      },
-    ],
-    [
-      {
-        label: t('theme-dropdown:System-Theme'),
-        icon: 'jra-display',
-        onClick: () => {
-          selectSystemTheme();
-        },
-      },
-    ],
-  ];
-
-  const languagesDropdownMenu = [
-    supportedLanguages.map((language) => ({
-      label: language.name,
-      icon: (
-        <div className="mr-2">
-          <ReactCountryFlag
-            countryCode={language.country}
-            style={{
-              fontSize: '1.5em',
-            }}
-          />
-        </div>
-      ),
-      onClick: () => {
-        changeLanguage(language);
-      },
-    })),
-  ];
+  const { isSystemSetting, theme } = themeProps;
 
   return (
     <Header
-      className="z-20"
+      className="z-20 md:flex hidden"
+      dummyHeaderClassName="md:flex hidden"
       leftContent={
         <span className="text-2xl text-black dark:text-white items-center">
           Jon R Aaron
@@ -88,8 +32,7 @@ export function MainHeader({ themeProps }: MainHeaderProps) {
       }
       rightContent={
         <>
-          <DropDownWithIcons
-            className="mr-2"
+          <NavDropdown
             menu={languagesDropdownMenu}
             buttonContent={
               <ReactCountryFlag
@@ -100,8 +43,7 @@ export function MainHeader({ themeProps }: MainHeaderProps) {
               />
             }
           />
-          <DropDownWithIcons
-            className="mr-2"
+          <NavDropdown
             menu={themeDropdownMenu}
             buttonContent={
               <i

@@ -1,35 +1,23 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { SubHeader } from '@jonraaron/common-components';
-import { NavItem } from '@jonraaron/data';
+import { MenuSection, NavItem } from '@jonraaron/data';
 import kebabCase from 'lodash/kebabCase';
 import classNames from 'classnames';
 
-export function MainSubHeader() {
-  const location = useLocation();
-  const navList: NavItem[] = [
-    {
-      label: 'Home',
-      path: '/',
-      isActive: location.pathname === '/',
-    },
-    {
-      label: 'Featured Components',
-      path: '/featured-components',
-      isActive: location.pathname === '/featured-components',
-    },
-    {
-      label: 'Storybook',
-      url: process.env['NX_STORYBOOK_URL'] || '/unknown',
-    },
-  ];
+export interface MainSubHeaderProps {
+  navList: MenuSection;
+}
+
+export function MainSubHeader({ navList }: MainSubHeaderProps) {
   return (
     <SubHeader
+      className="hidden md:flex"
       leftContent={
         <ul className="flex">
-          {navList.map(({ path, label, url }) => {
-            if (path && url)
+          {navList.map(({ path, label, href }) => {
+            if (path && href)
               throw new Error('Only path or url is allowed...not both.');
-            if (!path && !url)
+            if (!path && !href)
               throw new Error('Either path or url is required.');
 
             if (path) {
@@ -53,7 +41,7 @@ export function MainSubHeader() {
               <li key={kebabCase(label)} className="mr-10">
                 <a
                   className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1 active:text-primary-3"
-                  href={url}
+                  href={href}
                 >
                   {label}
                 </a>

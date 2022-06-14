@@ -2,9 +2,12 @@ import { ReactNode } from 'react';
 
 export type MenuItem = {
   label: string;
-  icon: ReactNode;
+  icon?: ReactNode;
   href?: string;
   onClick?: () => void;
+  path?: string;
+  nestedMenu?: DropDownMenuWithIcons;
+  isActive?: boolean;
 };
 
 export type MenuSection = MenuItem[];
@@ -48,3 +51,20 @@ export type NavItem = {
   url?: string;
   isActive?: boolean;
 };
+
+export type Theme = {
+  isSystemSetting: boolean;
+  theme: string;
+  selectLightTheme: () => void;
+  selectDarkTheme: () => void;
+  selectSystemTheme: () => void;
+};
+
+export enum BodyRelativeDirectionsEnum {
+  UP = 'UP',
+  DOWN = 'DOWN',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  FORWARD = 'FORWARD',
+  BACKWARD = 'BACKWARD',
+}
