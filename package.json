@@ -12,7 +12,7 @@
     "start:api": "npx nx run api:serve",
     "storybook": "doppler run --project cc-storybook --config dev -- nx run common-components:storybook",
     "build": "npx concurrently --names \"APPS,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npx nx build\" \"nx build-storybook common-components\"",
-    "heroku-postbuild": "npx nx build $PROJECT_NAME --prod",
+    "heroku-postbuild": "npx concurrently --names \"APPS,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npx nx build $PROJECT_NAME --prod\" \"nx build-storybook common-components\"",
     "test": "nx test",
     "prettier:check": "npx prettier --check .",
     "eslint": "npx eslint",
