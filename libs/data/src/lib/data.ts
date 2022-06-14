@@ -41,3 +41,10 @@ export type ToolData = {
   name: string;
   href: string;
 };
+
+export type NavItem = {
+  label: string;
+  path?: string;
+  url?: string;
+  isActive?: boolean;
+};

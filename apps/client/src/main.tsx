@@ -6,6 +6,7 @@ import App from './app/app';
 import { initI18n } from './i18n';
 import { store } from './app/redux/store';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 initI18n(
   '/assets/locales/{{lng}}/{{ns}}.json',
@@ -23,7 +24,9 @@ root.render(
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </Auth0Provider>
   </StrictMode>

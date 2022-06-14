@@ -1,20 +1,15 @@
 import { render } from '@testing-library/react';
 
-import App from './app';
-import { Providers } from '../test-utils/providers';
+import MainSubHeader from './main-sub-header';
+import { Providers } from '../../test-utils/providers';
 
-jest.mock('logrocket', () => ({
-  init: () => null,
-}));
-
-describe('App', () => {
+describe('MainSubHeader', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
       <Providers>
-        <App />
+        <MainSubHeader />
       </Providers>
     );
-
     expect(baseElement).toBeTruthy();
   });
 });

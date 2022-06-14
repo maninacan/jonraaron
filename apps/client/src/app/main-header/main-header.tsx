@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useSelector } from 'react-redux';
 import ReactCountryFlag from 'react-country-flag';
 import classNames from 'classnames';
 import {
@@ -81,6 +80,7 @@ export function MainHeader({ themeProps }: MainHeaderProps) {
 
   return (
     <Header
+      className="z-20"
       leftContent={
         <span className="text-2xl text-black dark:text-white items-center">
           Jon R Aaron

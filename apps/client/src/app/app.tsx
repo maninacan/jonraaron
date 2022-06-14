@@ -10,6 +10,7 @@ import MainHeader from './main-header/main-header';
 import MainContent from './main-content/main-content';
 import ErrorFallback from './error-fallback/error-fallback';
 import { removeUser, setUser } from './redux/userSlice';
+import MainSubHeader from './main-sub-header/main-sub-header';
 
 LogRocket.init(process.env['NX_LOGROCKET_APP_ID'] || '');
 setupLogRocketReact(LogRocket);
