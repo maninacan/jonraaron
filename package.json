@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "fontello:install": "npx fontello-cli --config ./fontello.config.json --css ./apps/client/src/fontello/css --font ./apps/client/src/fontello/font install",
+    "fontello:install": "npx concurrently --names \"CLIENT,COMMON-COMPONENTS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run fontello:install-client\" \"npm run fontello:install-common-components\" ",
+    "fontello:install-client": "npx fontello-cli --config ./fontello.config.json --css ./apps/client/src/fontello/css --font ./apps/client/src/fontello/font install",
+    "fontello:install-common-components": "npx fontello-cli --config ./fontello.config.json --css ./libs/common-components/src/fontello/css --font ./libs/common-components/src/fontello/font install",
     "fontello:open": "npx fontello-cli --config ./fontello.config.json open",
     "start": "npx concurrently --names \"CLIENT,API\" -c \"bgBlue.bold,bgMagenta.bold\" \"doppler run --project client --config dev -- npm run start:client\" \"doppler run --project api --config dev -- npm run start:api\"",
     "start:client": "npx nx run client:serve",
