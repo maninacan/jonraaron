@@ -7,7 +7,7 @@
     "fontello:install-client": "npx fontello-cli --config ./fontello.config.json --css ./apps/client/src/fontello/css --font ./apps/client/src/fontello/font install",
     "fontello:install-common-components": "npx fontello-cli --config ./fontello.config.json --css ./libs/common-components/src/fontello/css --font ./libs/common-components/src/fontello/font install",
     "fontello:open": "npx fontello-cli --config ./fontello.config.json open",
-    "start": "npx concurrently --names \"CLIENT,API\" -c \"bgBlue.bold,bgMagenta.bold\" \"doppler run --project client --config dev -- npm run start:client\" \"doppler run --project api --config dev -- npm run start:api\"",
+    "start": "npx concurrently --names \"CLIENT,API,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold,bgYellow.bold\" \"doppler run --project client --config dev -- npm run start:client\" \"doppler run --project api --config dev -- npm run start:api\" \"npm run storybook\"",
     "start:client": "npx nx run client:serve",
     "start:api": "npx nx run api:serve",
     "storybook": "doppler run --project cc-storybook --config dev -- nx run common-components:storybook",
