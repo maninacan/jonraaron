@@ -5,12 +5,14 @@ export interface SubHeaderProps {
   leftContent?: ReactNode;
   rightContent?: ReactNode;
   className?: string;
+  dummyHeaderClassName?: string;
 }
 
 export function SubHeader({
   leftContent,
   rightContent,
   className,
+  dummyHeaderClassName,
 }: SubHeaderProps) {
   return (
     <>
@@ -23,7 +25,9 @@ export function SubHeader({
         <div className="flex items-center">{leftContent}</div>
         <div className="flex items-center">{rightContent}</div>
       </header>
-      <header className="dummy-header w-full h-10" />
+      <header
+        className={classNames('dummy-header w-full h-10', dummyHeaderClassName)}
+      />
     </>
   );
 }

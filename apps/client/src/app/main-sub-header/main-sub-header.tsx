@@ -12,6 +12,7 @@ export function MainSubHeader({ navList }: MainSubHeaderProps) {
   return (
     <SubHeader
       className="hidden md:flex"
+      dummyHeaderClassName="hidden md:flex"
       leftContent={
         <ul className="flex">
           {navList.map(({ path, label, href }) => {
