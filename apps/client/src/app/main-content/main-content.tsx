@@ -190,6 +190,15 @@ export function MainContent() {
           >
             Github
           </a>
+          . {t('intro:the-shared-components-can-be-found-in')}
+          <a
+            className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
+            href={process.env['NX_STORYBOOK_URL']}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Storybook
+          </a>
           . {t('intro:if-you-find-this-site-useful')}
           <a
             className="text-primary-2 hover:text-primary-3 dark:hover:text-primary-1"
