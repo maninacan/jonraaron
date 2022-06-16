@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "npm:install": "npm install",
+    "npm install": "doppler run --project client --config dev -- npm install",
     "svg-components:generate": "npx @svgr/cli --out-dir ./libs/common-components/src/assets/svg-components --ignore-existing --filename-case kebab ./libs/common-components/src/assets/svgs",
     "fontello:install": "rm -rf .fontello-session && npx concurrently --names \"CLIENT,COMMON-COMPONENTS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run fontello:install-client\" \"npm run fontello:install-common-components\" ",
     "fontello:install-client": "npx fontello-cli --config ./fontello.config.json --css ./apps/client/src/fontello/css --font ./apps/client/src/fontello/font install",
