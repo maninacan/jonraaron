@@ -9,10 +9,7 @@ module.exports = (config, context) => {
       rules: [
         {
           test: /\.svg$/,
-          use: [
-            { loader: '@svgr/webpack', options: { icon: true } },
-            'url-loader',
-          ],
+          use: ['@svgr/webpack'],
         },
       ],
     },

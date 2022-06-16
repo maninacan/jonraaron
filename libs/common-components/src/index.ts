@@ -1,3 +1,5 @@
+export * from './lib/title/title';
+export * from './lib/clock/clock';
 export * from './lib/coming-soon/coming-soon';
 export * from './lib/sub-header/sub-header';
 export * from './lib/icon-button/icon-button';
