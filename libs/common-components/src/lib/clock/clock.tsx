@@ -34,9 +34,10 @@ const minutesToSeconds = (minutes: number) => {
   return minutes * 60;
 };
 
+const SECOND_ADJUSTER = 5;
 const getCurrentPercentOfMinute = () => {
   const now = new Date();
-  const nowSeconds = now.getSeconds();
+  const nowSeconds = now.getSeconds() + SECOND_ADJUSTER;
 
   return secondsToMinutes(nowSeconds);
 };
@@ -73,6 +74,14 @@ const clockTL = (target: gsap.TweenTarget) => {
   return tl;
 };
 
+const startTheHourHand = (tl: any, target: gsap.TweenTarget) => {
+  tl.to(target, {
+    rotation: '+=360',
+    duration: minutesToSeconds(hoursToMinutes(12)),
+    ease: 'linear',
+  });
+};
+
 const hourHandTL = (target: gsap.TweenTarget) => {
   const tl = gsap.timeline();
 
@@ -95,13 +104,17 @@ const hourHandTL = (target: gsap.TweenTarget) => {
     ease: 'linear',
   });
 
-  tl.to(target, {
-    rotation: '+=360',
-    duration: minutesToSeconds(hoursToMinutes(12)),
-    ease: 'linear',
-  });
+  startTheHourHand(tl, target);
 
   return tl;
+};
+
+const startTheMinuteHand = (tl: any, target: gsap.TweenTarget) => {
+  tl.to(target, {
+    rotation: '+=360',
+    duration: minutesToSeconds(60),
+    ease: 'linear',
+  });
 };
 
 const minuteHandTL = (target: gsap.TweenTarget) => {
@@ -126,13 +139,20 @@ const minuteHandTL = (target: gsap.TweenTarget) => {
     ease: 'linear',
   });
 
-  tl.to(target, {
-    rotation: '+=360',
-    duration: minutesToSeconds(60),
-    ease: 'linear',
-  });
+  startTheMinuteHand(tl, target);
 
   return tl;
+};
+
+const startTheSecondHand = (tl: any, target: gsap.TweenTarget) => {
+  tl.to(target, {
+    rotation: '+=360',
+    duration: 60,
+    ease: 'linear',
+    onComplete: () => {
+      startTheSecondHand(tl, target);
+    },
+  });
 };
 
 const secondHandTL = (target: gsap.TweenTarget) => {
@@ -144,7 +164,7 @@ const secondHandTL = (target: gsap.TweenTarget) => {
     rotation: 360 * 5,
     duration: 1,
     ease: 'linear',
-    delay: 1.5,
+    delay: 2,
   });
 
   tl.set(target, { transformOrigin: '50% 210px', rotation: 0 });
@@ -157,12 +177,7 @@ const secondHandTL = (target: gsap.TweenTarget) => {
     ease: 'linear',
   });
 
-  tl.to(target, {
-    rotation: '+=360',
-    duration: 60,
-    ease: 'linear',
-  });
-
+  startTheSecondHand(tl, target);
   return tl;
 };
 
